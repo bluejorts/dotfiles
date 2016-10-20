@@ -13,6 +13,7 @@ endfunc
 call plug#begin('~/.vim/plugged')
   Plug 'flazz/vim-colorschemes'
   Plug 'chriskempson/base16-vim'
+  Plug 'morhetz/gruvbox'
 
   Plug 'vim-airline/vim-airline'
   Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
@@ -21,6 +22,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-endwise'
   Plug 'scrooloose/nerdtree'
+  Plug 'Xuyuanp/nerdtree-git-plugin'
   Plug 'ctrlpvim/ctrlp.vim'
   Plug 'FelikZ/ctrlp-py-matcher'
 
@@ -30,6 +32,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'slim-template/vim-slim'
   Plug 'kchmck/vim-coffee-script'
   Plug 'tpope/vim-cucumber'
+  Plug 'othree/yajs.vim'
 
   Plug 'elixir-lang/vim-elixir'
   Plug 'thinca/vim-ref'
@@ -41,8 +44,9 @@ call plug#begin('~/.vim/plugged')
 call plug#end()
 
 " ------ General Config ------
-let base16colorspace=256  " Access colors present in 256 colorspace
-colorscheme native
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+set background=dark
+colorscheme gruvbox
 
 set nocompatible
 syntax on

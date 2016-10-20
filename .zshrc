@@ -8,6 +8,7 @@ source $HOME/.keys.zsh
 export PATH=$PATH:$HOME/bin
 export EDITOR='nvim'
 export MSF_DATABASE_CONFIG=/usr/local/share/metasploit-framework/config/database.yml
+source $HOME/.vim/plugged/gruvbox/gruvbox_256palette.sh
 
 # Begin Antigen Setup
 source $HOME/.antigen/src/antigen.zsh
@@ -41,3 +42,5 @@ alias nvimrc="nvim $HOME/.config/nvim/init.vim"
 alias dotfile="$(which git) --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+pokedex $(( ( RANDOM % 150 )  + 1 ))
