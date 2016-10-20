@@ -59,6 +59,18 @@ set tabstop=8 softtabstop=0 expandtab shiftwidth=2 smarttab
 set number
 set wmh=0
 let mapleader = ","
+" Reload files changed outside vim
+set autoread
+" Extend % functionality
+runtime macros/matchit.vim
+" Search is only case sensitive if it includes a CAPITAL letter
+set ignorecase 
+set smartcase
+" Actually do title
+set title
+" Highlight search terms...
+set hlsearch
+set incsearch " ...dynamically as they are typed.
 
 nmap <leader>d :NERDTreeToggle<cr>
 nmap <leader>w :bnext<cr>
