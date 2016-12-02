@@ -10,6 +10,7 @@ export EDITOR='nvim'
 export MSF_DATABASE_CONFIG=/usr/local/share/metasploit-framework/config/database.yml
 source $HOME/.vim/plugged/gruvbox/gruvbox_256palette.sh
 source "`brew --prefix`/etc/grc.bashrc"
+export PATH="$PATH:`yarn global bin`"
 
 # Begin Antigen Setup
 source $HOME/.antigen/src/antigen.zsh
