@@ -25,6 +25,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'Xuyuanp/nerdtree-git-plugin'
   Plug 'ctrlpvim/ctrlp.vim'
   Plug 'FelikZ/ctrlp-py-matcher'
+  Plug 'scrooloose/nerdcommenter'
 
   Plug 'vim-ruby/vim-ruby'
   Plug 'tpope/vim-rails'
