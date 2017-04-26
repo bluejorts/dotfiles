@@ -1,6 +1,9 @@
 # Teladoc ENV
 source $HOME/.teladoc_env.zsh
 
+# tiny care term
+source $HOME/.tinycare.zsh
+
 # Some secrety things
 source $HOME/.keys.zsh
 
@@ -44,3 +47,4 @@ alias shakes="${HOME}/bin/shakes.py"
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 pokedex $(( ( RANDOM % 150 )  + 1 ))
+export PATH="/usr/local/opt/qt/bin:$PATH"
