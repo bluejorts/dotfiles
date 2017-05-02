@@ -15,7 +15,7 @@ export TTC_CELSIUS=false
 
 # Unset this if you _don't_ want to use Twitter keys and want to
 # use web scraping instead.
-export TTC_APIKEYS=true
+export TTC_APIKEYS=false
 
 # Refresh the dashboard every 20 minutes.
 export TTC_UPDATE_INTERVAL=10
