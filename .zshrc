@@ -13,6 +13,7 @@ export EDITOR='nvim'
 export MSF_DATABASE_CONFIG=/usr/local/share/metasploit-framework/config/database.yml
 source "`brew --prefix`/etc/grc.bashrc"
 export PATH="$PATH:`yarn global bin`"
+export PATH="/usr/local/opt/qt/bin:$PATH"
 
 # Begin Antigen Setup
 source $HOME/.antigen/src/antigen.zsh
@@ -45,5 +46,3 @@ alias shakes="${HOME}/bin/shakes.py"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-pokedex $(( ( RANDOM % 150 )  + 1 ))
-export PATH="/usr/local/opt/qt/bin:$PATH"
