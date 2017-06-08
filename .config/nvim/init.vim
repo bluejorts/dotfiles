@@ -23,9 +23,9 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-endwise'
   Plug 'scrooloose/nerdtree'
   Plug 'Xuyuanp/nerdtree-git-plugin'
-  Plug 'ctrlpvim/ctrlp.vim'
-  Plug 'FelikZ/ctrlp-py-matcher'
   Plug 'scrooloose/nerdcommenter'
+
+  Plug 'Shougo/denite.nvim'
 
   Plug 'vim-ruby/vim-ruby'
   Plug 'tpope/vim-rails'
@@ -42,6 +42,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'maxmellon/vim-jsx-pretty'
 
   Plug 'sirtaj/vim-openscad'
+  Plug 'easymotion/vim-easymotion'
 call plug#end()
 
 " ------ General Config ------
@@ -72,6 +73,8 @@ set title
 " Highlight search terms...
 set hlsearch
 set incsearch " ...dynamically as they are typed.
+" Use the mouse like a filthy scrub
+set mouse=a
 
 nmap <leader>d :NERDTreeToggle<cr>
 nmap <leader>w :bnext<cr>
@@ -85,16 +88,14 @@ nmap <silent> <A-Left> :wincmd h<CR>
 nmap <silent> <A-Right> :wincmd l<CR>
 nnoremap <C-n> :call NumberToggle()<cr>
 
-" ------ CtrlP ------
+" ------ Denite ------
 
-let g:ctrlp_map = ',f'
-let g:ctrlp_user_command = 'pt %s -i --nocolor --nogroup --hidden
-      \ --ignore .git
-      \ --ignore .DS_Store
-      \ --ignore .bundle
-      \ -g ""'
-let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
-let g:ctrlp_use_caching = 0
+call denite#custom#var('file_rec', 'command',
+	\ ['pt', '--follow', '--nocolor', '--nogroup',
+	\  (has('win32') ? '-g:' : '-g='), ''])
+nnoremap <leader>b :Denite buffer<CR>
+nnoremap <leader>f :Denite file_rec<CR>
+nnoremap <leader><leader>f :Denite grep -no-empty<CR>
 
 " ------ Deoplete ------
 

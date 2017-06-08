@@ -14,6 +14,7 @@ export MSF_DATABASE_CONFIG=/usr/local/share/metasploit-framework/config/database
 source "`brew --prefix`/etc/grc.bashrc"
 export PATH="$PATH:`yarn global bin`"
 export PATH="/usr/local/opt/qt/bin:$PATH"
+export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"
 
 # Begin Antigen Setup
 source $HOME/.antigen/src/antigen.zsh
@@ -38,11 +39,12 @@ alias zshrc="nvim $HOME/.zshrc"
 alias vpn="sudo openconnect secureconnect.teladoc.com --csd-user=apaxton --csd-wrapper=$HOME/.cisco/wrapper.sh --user=apaxton@teladoc.com"
 eval "$(thefuck --alias)"
 alias rake="noglob bundle exec rake"
-alias be="bundle exec" 
+alias be="title ${PWD##*/} & bundle exec" 
 alias gmm="git stash && git fetch origin && git merge origin/master && git stash pop"
 alias nvimrc="nvim $HOME/.config/nvim/init.vim"
 alias dotfile="$(which git) --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 alias shakes="${HOME}/bin/shakes.py"
+alias nvim="title ${PWD##*/} & nvim"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
