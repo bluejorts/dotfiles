@@ -2,14 +2,6 @@ function! DoRemote(arg)
   UpdateRemotePlugins
 endfunction
 
-function! NumberToggle()
-  if(&relativenumber == 1)
-    set number
-  else
-    set relativenumber
-  endif
-endfunc
-
 call plug#begin('~/.vim/plugged')
   Plug 'flazz/vim-colorschemes'
   Plug 'chriskempson/base16-vim'
@@ -24,16 +16,22 @@ call plug#begin('~/.vim/plugged')
   Plug 'scrooloose/nerdtree'
   Plug 'Xuyuanp/nerdtree-git-plugin'
   Plug 'scrooloose/nerdcommenter'
-
-  Plug 'Shougo/denite.nvim'
+  Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+  Plug 'jiangmiao/auto-pairs'
 
   Plug 'vim-ruby/vim-ruby'
   Plug 'tpope/vim-rails'
-  Plug 'tpope/vim-endwise'
   Plug 'slim-template/vim-slim'
   Plug 'kchmck/vim-coffee-script'
   Plug 'tpope/vim-cucumber'
   Plug 'othree/yajs.vim'
+  Plug 'pangloss/vim-javascript'
+  
+  Plug 'kien/ctrlp.vim'
+
+  Plug 'Quramy/vim-js-pretty-template'
+  Plug 'leafgarland/typescript-vim'
+  Plug 'Quramy/tsuquyomi', {'do' : 'make'}
 
   Plug 'elixir-lang/vim-elixir'
   Plug 'thinca/vim-ref'
@@ -43,6 +41,9 @@ call plug#begin('~/.vim/plugged')
 
   Plug 'sirtaj/vim-openscad'
   Plug 'easymotion/vim-easymotion'
+
+  " dumb bullshit starts here
+  Plug 'junegunn/vim-emoji'
 call plug#end()
 
 " ------ General Config ------
@@ -58,7 +59,7 @@ filetype plugin on
 
 set clipboard=unnamed
 set tabstop=8 softtabstop=0 expandtab shiftwidth=2 smarttab
-set number
+set relativenumber
 set wmh=0
 let mapleader = ","
 " Reload files changed outside vim
@@ -86,16 +87,10 @@ nmap <silent> <A-Up> :wincmd k<CR>
 nmap <silent> <A-Down> :wincmd j<CR>
 nmap <silent> <A-Left> :wincmd h<CR>
 nmap <silent> <A-Right> :wincmd l<CR>
-nnoremap <C-n> :call NumberToggle()<cr>
 
-" ------ Denite ------
+" ------ CtrlP ------
 
-call denite#custom#var('file_rec', 'command',
-	\ ['pt', '--follow', '--nocolor', '--nogroup',
-	\  (has('win32') ? '-g:' : '-g='), ''])
-nnoremap <leader>b :Denite buffer<CR>
-nnoremap <leader>f :Denite file_rec<CR>
-nnoremap <leader><leader>f :Denite grep -no-empty<CR>
+nmap <leader>f :CtrlP<CR>
 
 " ------ Deoplete ------
 
@@ -128,6 +123,22 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
+" ------ Typescript ------
+
+" QuickFix window with compile errors on :make
+let g:typescript_compiler_binary = 'tsc'
+let g:typescript_compiler_options = ''
+autocmd QuickFixCmdPost [^l]* nested cwindow
+autocmd QuickFixCmdPost    l* nested lwindow
+
+" Syntax highlighting on HTML templates inside .ts files
+autocmd FileType typescript JsPreTmpl html
+autocmd FileType typescript syn clear foldBraces
+
+" Syntastic integration for Tsuquyomi
+let g:tsuquyomi_disable_quickfix = 1
+let g:syntastic_typescript_checkers = ['tsuquyomi'] " You shouldn't use 'tsc' checker.
 
 " Highlight words to avoid in tech writing
 " =======================================

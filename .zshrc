@@ -35,16 +35,20 @@ eval "$(rbenv init -)"
 
 # aliases
 alias -g sprunge="curl -F 'sprunge=<-' http://sprunge.us"
-alias zshrc="nvim $HOME/.zshrc"
+alias zshrc='nvim $HOME/.zshrc'
 alias vpn="sudo openconnect secureconnect.teladoc.com --csd-user=apaxton --csd-wrapper=$HOME/.cisco/wrapper.sh --user=apaxton@teladoc.com"
 eval "$(thefuck --alias)"
 alias rake="noglob bundle exec rake"
-alias be="title ${PWD##*/} & bundle exec" 
+alias be='title ${PWD##*/} && bundle exec' 
 alias gmm="git stash && git fetch origin && git merge origin/master && git stash pop"
-alias nvimrc="nvim $HOME/.config/nvim/init.vim"
+alias nvimrc='nvim $HOME/.config/nvim/init.vim'
 alias dotfile="$(which git) --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 alias shakes="${HOME}/bin/shakes.py"
-alias nvim="title ${PWD##*/} & nvim"
+alias nvim='title ${PWD##*/} && nvim'
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
