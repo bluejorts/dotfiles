@@ -6,6 +6,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'flazz/vim-colorschemes'
   Plug 'chriskempson/base16-vim'
   Plug 'morhetz/gruvbox'
+  Plug 'dracula/vim'
 
   Plug 'vim-airline/vim-airline'
   Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
@@ -26,8 +27,10 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-cucumber'
   Plug 'othree/yajs.vim'
   Plug 'pangloss/vim-javascript'
+  Plug 'vim-scripts/x12-syntax'
   
   Plug 'kien/ctrlp.vim'
+  Plug 'nazo/pt.vim'
 
   Plug 'Quramy/vim-js-pretty-template'
   Plug 'leafgarland/typescript-vim'
@@ -49,7 +52,8 @@ call plug#end()
 " ------ General Config ------
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set background=dark
-colorscheme gruvbox
+colorscheme dracula
+color dracula
 
 set nocompatible
 syntax on
@@ -139,6 +143,10 @@ autocmd FileType typescript syn clear foldBraces
 " Syntastic integration for Tsuquyomi
 let g:tsuquyomi_disable_quickfix = 1
 let g:syntastic_typescript_checkers = ['tsuquyomi'] " You shouldn't use 'tsc' checker.
+
+" ------ Typescript ------
+autocmd BufNewFile,BufRead *.x12 set ft=x12
+
 
 " Highlight words to avoid in tech writing
 " =======================================
