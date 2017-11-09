@@ -1,0 +1,10 @@
+#!/bin/sh
+
+REPO=$1
+BRANCH=$2
+HOST=$3
+echo "Deploying $BRANCH of $REPO to $HOST"
+curl -X POST \
+ --user "$TD_GITHUB_USER:$TD_DEPLOY_GITHUB_TOKEN" \
+ --data-urlencode json='{"parameter": [{"name":"DEPLOY_ENV", "value": "'$HOST'"}, {"name":"DEPLOY_TARGET", "value":"'$REPO'"}, {"name":"DEPLOY_BRANCH", "value":"'$BRANCH'"}]}' \
+jenkins.prod.env.teladoc.com/job/deploy-dev/build
