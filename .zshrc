@@ -15,6 +15,7 @@ source "`brew --prefix`/etc/grc.bashrc"
 export PATH="$PATH:`yarn global bin`"
 export PATH="/usr/local/opt/qt/bin:$PATH"
 export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"
+export DEVPASS="test"
 
 # Begin Antigen Setup
 source /usr/local/share/antigen/antigen.zsh
@@ -25,10 +26,14 @@ antigen bundle git
 antigen bundle command-not-found
 antigen bundle zsh-users/zsh-syntax-highlighting
 
-antigen theme jnrowe
+antigen theme agnoster
 
 antigen apply
 # End Antigen Setup
+
+# asdf setup
+. $HOME/.asdf/asdf.sh
+. $HOME/.asdf/completions/asdf.bash 
 
 # aliases
 alias -g sprunge="curl -F 'sprunge=<-' http://sprunge.us"
@@ -42,6 +47,9 @@ alias nvimrc='nvim $HOME/.config/nvim/init.vim'
 alias dotfile="$(which git) --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 alias shakes="${HOME}/bin/shakes.py"
 alias nvim='title ${PWD##*/} && nvim'
+alias dc="docker-compose"
+alias dr="docker-compose --rm"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
 
