@@ -13,8 +13,8 @@ export EDITOR='nvim'
 export MSF_DATABASE_CONFIG=/usr/local/share/metasploit-framework/config/database.yml
 source "`brew --prefix`/etc/grc.bashrc"
 export PATH="$PATH:`yarn global bin`"
-export PATH="/usr/local/opt/qt/bin:$PATH"
 export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"
+export PATH="$(brew --prefix qt@5.5)/bin:$PATH"
 export DEVPASS="test"
 
 # Begin Antigen Setup
@@ -49,6 +49,7 @@ alias shakes="${HOME}/bin/shakes.py"
 alias nvim='title ${PWD##*/} && nvim'
 alias dc="docker-compose"
 alias dr="docker-compose --rm"
+alias datafart='curl --data-binary @- datafart.com'
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
