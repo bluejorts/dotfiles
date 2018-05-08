@@ -51,6 +51,14 @@ alias dc="docker-compose"
 alias dr="docker-compose --rm"
 alias datafart='curl --data-binary @- datafart.com'
 
+function lowercase-files-in-cd {
+  for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower:]"`"; done
+}
+
+function git-lowercase-files-in-cd {
+  for f in *; do git mv "$f" "$f.tmp"; git mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower:]"`"; done
+}
+
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 
