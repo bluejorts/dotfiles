@@ -51,6 +51,10 @@ alias dc="docker-compose"
 alias dr="docker-compose --rm"
 alias datafart='curl --data-binary @- datafart.com'
 
+function samlsha1 {
+  echo $1 | sha1sum | awk '{print toupper($1)}' | fold -w2 | paste -sd':' -
+}
+
 function lowercase-files-in-cd {
   for f in *; do mv "$f" "$f.tmp"; mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower:]"`"; done
 }
