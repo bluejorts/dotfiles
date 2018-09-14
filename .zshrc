@@ -50,6 +50,7 @@ alias nvim='title ${PWD##*/} && nvim'
 alias dc="docker-compose"
 alias dr="docker-compose --rm"
 alias datafart='curl --data-binary @- datafart.com'
+alias -g rb="noglob rb"
 
 function samlsha1 {
   echo $1 | sha1sum | awk '{print toupper($1)}' | fold -w2 | paste -sd':' -
