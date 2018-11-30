@@ -38,7 +38,7 @@ antigen apply
 # aliases
 alias -g sprunge="curl -F 'sprunge=<-' http://sprunge.us"
 alias zshrc='nvim $HOME/.zshrc'
-alias vpn="sudo openconnect secureconnect.teladoc.com --csd-user=apaxton --csd-wrapper=$HOME/.cisco/wrapper.sh --user=apaxton@teladoc.com --authgroup='SecureConnect-NY' --servercert sha256:4fb300cdcff6915d60b69395e017b3c9e2d0b8323425f8b9f13a60c3dd773b10"
+alias vpn="sudo openconnect webvpn.teladochealth.com --csd-user=apaxton --csd-wrapper=$HOME/.cisco/wrapper.sh --user=apaxton@teladoc.com --authgroup='TDH-Okta-VPN' --servercert sha256:019dcc8bf6b3cc429f9204d926bb937a10e75f5e5baf15e14cb93bb3f90e9335"
 eval "$(thefuck --alias)"
 alias rake="noglob bundle exec rake"
 alias be='title ${PWD##*/} && bundle exec' 
