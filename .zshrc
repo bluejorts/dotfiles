@@ -12,9 +12,9 @@ export PATH=$PATH:$HOME/bin
 export EDITOR='nvim'
 export MSF_DATABASE_CONFIG=/usr/local/share/metasploit-framework/config/database.yml
 source "`brew --prefix`/etc/grc.bashrc"
-export PATH="$PATH:`yarn global bin`"
 export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"
-export PATH="$(brew --prefix qt@5.5)/bin:$PATH"
+# qt 5.5 fuck off
+# export PATH="$(brew --prefix qt@5.5)/bin:$PATH"
 export DEVPASS="test"
 
 # Begin Antigen Setup
@@ -35,10 +35,14 @@ antigen apply
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash 
 
+# yarn path addition has to go after asdf otherwise it uses system yarn
+export PATH="$PATH:`yarn global bin`"
+
 # aliases
 alias -g sprunge="curl -F 'sprunge=<-' http://sprunge.us"
 alias zshrc='nvim $HOME/.zshrc'
-alias vpn="sudo openconnect webvpn.teladochealth.com --csd-user=apaxton --csd-wrapper=$HOME/.cisco/wrapper.sh --user=apaxton@teladoc.com --authgroup='TDH-Okta-VPN' --servercert sha256:019dcc8bf6b3cc429f9204d926bb937a10e75f5e5baf15e14cb93bb3f90e9335"
+alias vpn-okta="sudo openconnect webvpn.teladochealth.com --csd-user=apaxton --csd-wrapper=$HOME/.cisco/wrapper.sh --user=apaxton@teladoc.com --authgroup='TDH-Okta-VPN' --servercert sha256:019dcc8bf6b3cc429f9204d926bb937a10e75f5e5baf15e14cb93bb3f90e9335"
+alias vpn-cisco="sudo openconnect secureconnect.teladoc.com --csd-user=apaxton --csd-wrapper=$HOME/.cisco/wrapper.sh --user=apaxton@teladoc.com --authgroup='SecureConnect-NY' --servercert sha256:4fb300cdcff6915d60b69395e017b3c9e2d0b8323425f8b9f13a60c3dd773b10"
 eval "$(thefuck --alias)"
 alias rake="noglob bundle exec rake"
 alias be='title ${PWD##*/} && bundle exec' 
@@ -67,3 +71,9 @@ function git-lowercase-files-in-cd {
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 
+
+PATH="/Users/apaxton/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/Users/apaxton/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/Users/apaxton/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/Users/apaxton/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/Users/apaxton/perl5"; export PERL_MM_OPT;
