@@ -1,6 +1,9 @@
 # Teladoc ENV
 source $HOME/.teladoc_env.zsh
 
+# HY ENV
+source $HOME/.hy_env.zsh
+
 # tiny care term
 source $HOME/.tinycare.zsh
 
@@ -37,6 +40,9 @@ antigen apply
 
 # yarn path addition has to go after asdf otherwise it uses system yarn
 export PATH="$PATH:`yarn global bin`"
+
+# virtualenv things
+if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
 # aliases
 alias -g sprunge="curl -F 'sprunge=<-' http://sprunge.us"
