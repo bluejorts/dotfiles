@@ -1,7 +1,3 @@
-function! DoRemote(arg)
-  UpdateRemotePlugins
-endfunction
-
 call plug#begin('~/.vim/plugged')
   Plug 'flazz/vim-colorschemes'
   Plug 'chriskempson/base16-vim'
@@ -9,7 +5,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'dracula/vim'
 
   Plug 'vim-airline/vim-airline'
-  Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
   Plug 'scrooloose/syntastic'
   Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-surround'
@@ -43,11 +38,25 @@ call plug#begin('~/.vim/plugged')
   Plug 'maxmellon/vim-jsx-pretty'
 
   Plug 'sirtaj/vim-openscad'
+
   Plug 'easymotion/vim-easymotion'
 
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  "Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
+  "Plug 'uplus/deoplete-solargraph'
+
   " dumb bullshit starts here
-  Plug 'junegunn/vim-emoji'
+  Plug 'fszymanski/deoplete-emoji'
 call plug#end()
+
+" ------ Language Servers ------
+" let g:LanguageClient_serverCommands = {
+"    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+"    \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
+"    \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
+"    \ 'python': ['/usr/local/bin/pyls'],
+"    \ 
+" }
 
 " ------ General Config ------
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
@@ -163,7 +172,3 @@ function MatchTechWordsToAvoid()
 endfunction
 
 autocmd FileType markdown call MatchTechWordsToAvoid()
-autocmd BufWinEnter *.md call MatchTechWordsToAvoid()
-autocmd InsertEnter *.md call MatchTechWordsToAvoid()
-autocmd InsertLeave *.md call MatchTechWordsToAvoid()
-autocmd BufWinLeave *.md call clearmatches()
