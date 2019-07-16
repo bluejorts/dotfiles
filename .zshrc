@@ -18,7 +18,7 @@ source "`brew --prefix`/etc/grc.bashrc"
 export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"
 # qt 5.5 fuck off
 # export PATH="$(brew --prefix qt@5.5)/bin:$PATH"
-export DEVPASS="test"
+export MYSQL_PASSWORD="test"
 
 # Begin Antigen Setup
 source /usr/local/share/antigen/antigen.zsh
@@ -41,14 +41,12 @@ antigen apply
 # yarn path addition has to go after asdf otherwise it uses system yarn
 export PATH="$PATH:`yarn global bin`"
 
-# virtualenv things
-if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
-
 # aliases
 alias -g sprunge="curl -F 'sprunge=<-' http://sprunge.us"
 alias zshrc='nvim $HOME/.zshrc'
 alias vpn-okta="sudo openconnect webvpn.teladochealth.com --csd-user=apaxton --csd-wrapper=$HOME/.cisco/wrapper.sh --user=apaxton@teladoc.com --authgroup='TDH-Okta-VPN' --servercert sha256:019dcc8bf6b3cc429f9204d926bb937a10e75f5e5baf15e14cb93bb3f90e9335"
 alias vpn-cisco="sudo openconnect secureconnect.teladoc.com --csd-user=apaxton --csd-wrapper=$HOME/.cisco/wrapper.sh --user=apaxton@teladoc.com --authgroup='SecureConnect-NY' --servercert sha256:4fb300cdcff6915d60b69395e017b3c9e2d0b8323425f8b9f13a60c3dd773b10"
+alias vpn-astea="sudo openconnect secureconnect.teladoc.com/devacc --csd-user=apaxton --csd-wrapper=$HOME/.cisco/wrapper.sh --user=apaxton --servercert sha256:4fb300cdcff6915d60b69395e017b3c9e2d0b8323425f8b9f13a60c3dd773b10"
 eval "$(thefuck --alias)"
 alias rake="noglob bundle exec rake"
 alias be='title ${PWD##*/} && bundle exec' 
@@ -72,6 +70,10 @@ function lowercase-files-in-cd {
 
 function git-lowercase-files-in-cd {
   for f in *; do git mv "$f" "$f.tmp"; git mv "$f.tmp" "`echo $f | tr "[:upper:]" "[:lower:]"`"; done
+}
+
+function sedeasy {
+  sed -i "s/$(echo $1 | sed -e 's/\([[\/.*]\|\]\)/\\&/g')/$(echo $2 | sed -e 's/[\/&]/\\&/g')/g" $3
 }
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"

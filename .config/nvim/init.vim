@@ -23,6 +23,9 @@ call plug#begin('~/.vim/plugged')
   Plug 'othree/yajs.vim'
   Plug 'pangloss/vim-javascript'
   Plug 'vim-scripts/x12-syntax'
+
+  Plug 'godlygeek/tabular'
+  Plug 'plasticboy/vim-markdown'
   
   Plug 'kien/ctrlp.vim'
   Plug 'nazo/pt.vim'
