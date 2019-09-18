@@ -1,9 +1,3 @@
-# Teladoc ENV
-source $HOME/.teladoc_env.zsh
-
-# HY ENV
-source $HOME/.hy_env.zsh
-
 # tiny care term
 source $HOME/.tinycare.zsh
 
