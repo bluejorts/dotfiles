@@ -10,7 +10,7 @@ export EDITOR='nvim'
 export MSF_DATABASE_CONFIG=/usr/local/share/metasploit-framework/config/database.yml
 
 # Begin Antigen Setup
-source /usr/share/zsh/share/antigen.zsh
+source $HOME/.config/zsh/antigen.zsh
 
 antigen use oh-my-zsh
 
@@ -26,13 +26,6 @@ antigen apply
 # asdf setup
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash 
-
-# yvm setup
-export YVM_DIR=/home/austin/.yvm
-[ -r $YVM_DIR/yvm.sh ] && . $YVM_DIR/yvm.sh
-
-# yarn path addition has to go after asdf otherwise it uses system yarn
-export PATH="$PATH:`yarn global bin`"
 
 # aliases
 alias -g sprunge="curl -F 'sprunge=<-' http://sprunge.us"
