@@ -4,9 +4,6 @@ source $HOME/.tinycare.zsh
 # Some secrety things
 source $HOME/.keys.zsh
 
-# AWS mfa setup
-source $HOME/bin/alias-aws-mfa.sh
-
 # My ENV
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
@@ -30,7 +27,7 @@ antigen apply
 
 # asdf setup
 . $HOME/.asdf/asdf.sh
-. $HOME/.asdf/completions/asdf.bash 
+fpath=(${ASDF_DIR}/completions $fpath)
 
 # source kubectl completions
 if [ $commands[kubectl] ]; then source <(kubectl completion zsh); fi
@@ -69,3 +66,4 @@ function sedeasy {
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+autoload -Uz compinit && compinit
